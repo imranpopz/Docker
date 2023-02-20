@@ -37,8 +37,8 @@ RUN sudo apt install git ssh -y
 RUN sudo apt install repo -y
 
 # Configure git
-ENV GIT_USERNAME Sanju0910
-ENV GIT_EMAIL sreeshankar0910@gmail.com
+ENV GIT_USERNAME imranpopz
+ENV GIT_EMAIL imranpopz32@gmail.com
 RUN \
     git config --global user.name $GIT_USERNAME \
 &&  git config --global user.email $GIT_EMAIL
@@ -87,6 +87,11 @@ git clone https://github.com/akhilnarang/scripts.git /tmp/scripts \
 # Use python2 as the Default python
 RUN \
 sudo ln -sf /usr/bin/python2 /usr/bin/python
+
+RUN \
+sudo mkdir tmp && cd tmp \
+&& repo init -u https://github.com/Project-Xtended/manifest.git -b xt --depth=1 \
+&& repo sync --force-sync --no-clone-bundle --no-tags
 
 # Run bash
 CMD ["bash"]
